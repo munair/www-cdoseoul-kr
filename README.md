@@ -30,7 +30,7 @@ git config --global user.email munair@gmail.com
 
 # Next change into the app directory and get all
 # npm dependencies.
-cd cdoseoul-com
+cd www-cdoseoul-com
 npm install express
 npm install postmark
 
