@@ -1,6 +1,7 @@
 var express = require('express');
 var fs = require('fs');
-var nodemailer = require("nodemailer");
+var postmark = require("postmark")("4de1b518-9aac-4e43-af9b-1915c1f984c5");
+
 
 var app = express.createServer(express.logger());
 
@@ -12,38 +13,24 @@ app.get('/', function(request, response) {
 });
 
 app.post('/contact', function(request, response) {
-  contactlist = "class-request-contact-information.txt";
   var name = request.body.name;
   var email = request.body.email;
-  var comments = request.body.comments;
-  var out = "contact name: " + name + "\tcontact email: " + email + "\tcomments: " + comments + "\n";
-  var transport = nodemailer.createTransport("SES", {
-    AWSAccessKeyID: "AKIAJE4BML2KMDLY7MTQ",
-    AWSSecretKey: "Aun2EYJ0FFFcfuUxyjNAsmTrjhGgLO0hzTFL4+OEItMF",
-    ServiceUrl: "https://email-smtp.us-east-1.amazonaws.com"
+  var mobile = request.body.mobile;
+  var out = "contact name: " + name + "\tcontact email: " + email + "\tmobile: " + mobile + "\n";
+  postmark.send({
+    "From": "zumbi@cdoseoul.com",
+    "To": "zumbi@cdoseoul.com",
+    "Subject": "Free Class Signup Form Submission",
+    "TextBody": out,
+    "Tag": "registrant"
+  }, function(error, success) {
+       if(error) {
+          console.error("Unable to send via postmark: " + error.message);
+         return;
+       }
+    console.info("Sent to postmark for delivery")
   });
 
-  var mailOptions = {
-    from: "zumbi@cdoseoul.com", // sender address
-    to: "zumbi@cdoseoul.com", // list of receivers
-    subject: "Free Class Signup Form Submission", // Subject line
-    text: out // plaintext body or use -> html: "<b>Hello world</b>" // html body
-  }
-
-  transport.sendMail(mailOptions, function(error, response){
-    if(error){
-        console.log(error);
-    }else{
-        console.log("Message sent: " + response.message);
-    }
-
-    // if you don't want to use this transport object anymore, uncomment following line
-    //smtpTransport.close(); // shut down the connection pool, no more messages
-
-    transport.close(); // shut down the connection pool, no more messages
-  });
-
-  fs.writeFileSync(contactlist, out);
   response.redirect('back');
 });
 
