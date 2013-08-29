@@ -1,5 +1,5 @@
-cdoseoul-com
-============
+www-cdoseoul-com
+================
 
 Repository for cdoseoul.com domain.
 
@@ -24,7 +24,7 @@ cat ~/.ssh/id_rsa.pub
 
 # Now you can clone via SSH from github.
 # Cloning over SSH allows you to push/pull changes.
-git clone https://github.com/munair/cdoseoul-com.git
+git clone https://github.com/munair/www-cdoseoul-com.git
 git config --global user.name Munair
 git config --global user.email munair@gmail.com
 
