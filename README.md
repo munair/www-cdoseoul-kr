@@ -1,7 +1,7 @@
-www-cdoseoul-com
+www-cdoseoul-kr
 ================
 
-Repository for cdoseoul.com domain.
+Repository for cdoseoul.kr domain.
 
 To clone this repository on a new AWS EC2 instance --
 
@@ -24,13 +24,16 @@ cat ~/.ssh/id_rsa.pub
 
 # Now you can clone via SSH from github.
 # Cloning over SSH allows you to push/pull changes.
-git clone https://github.com/munair/www-cdoseoul-com.git
-git config --global user.name Munair
-git config --global user.email munair@gmail.com
+# Use the credential helper with caching set to 1 hour to avoid
+# having to repeatedly enter your username and password.
+git clone https://github.com/munair/www-cdoseoul-kr.git
+git config --global user.name "Munair Simpson"
+git config --global user.email "munair@gmail.com"
+git config --global credential.helper 'cache --timeout=3600'
 
 # Next change into the app directory and get all
 # npm dependencies.
-cd www-cdoseoul-com
+cd www-cdoseoul-kr
 npm install express
 npm install postmark
 
@@ -45,7 +48,7 @@ exit
 
 ```
 
-See also http://www.cdoseoul.com and [Heroku](https://www.heroku.com) for more details.
+See also http://www.cdoseoul.kr and [Heroku](https://www.heroku.com) for more details.
 
 
 
