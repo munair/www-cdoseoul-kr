@@ -43,6 +43,7 @@ npm install postmark
 heroku login
 heroku keys:add
 
+git checkout development
 exit
 # We need to logout and log back in to enable node
 
