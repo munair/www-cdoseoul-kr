@@ -95,6 +95,7 @@ sleep 5
 git merge development
 git push origin staging
 heroku git:remote -a munair-cdoseoul-kr-staging -r staging-heroku
+curl http://munair-cdoseoul-kr-staging.herokuapp.com | more
 git push staging-heroku staging:master
 git checkout master
 git branch
@@ -103,13 +104,10 @@ git merge staging
 git push origin master
 heroku git:remote -a munair-cdoseoul-kr -r production-heroku
 git push production-heroku master:master
+curl http://munair-cdoseoul-kr.herokuapp.com | more
 git checkout development
 
 ```
 
 See also http://www.cdoseoul.kr and [Heroku](https://www.heroku.com) for more details.
-
-
-
-
 
