@@ -87,7 +87,7 @@ git branch
 sleep 5
 vi $1
 git add $1
-git commit -m
+git commit -m "$2"
 git push origin development
 git checkout staging
 git branch
@@ -95,8 +95,8 @@ sleep 5
 git merge development
 git push origin staging
 heroku git:remote -a munair-cdoseoul-kr-staging -r staging-heroku
-curl http://munair-cdoseoul-kr-staging.herokuapp.com | more
 git push staging-heroku staging:master
+curl http://munair-cdoseoul-kr-staging.herokuapp.com | more
 git checkout master
 git branch
 sleep 5
