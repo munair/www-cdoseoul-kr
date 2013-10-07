@@ -1,6 +1,6 @@
 var express = require('express');
 var fs = require('fs');
-var postmark = require("postmark")("4de1b518-9aac-4e43-af9b-1915c1f984c5");
+var postmark = require("postmark")(process.env.POSTMARK_API_KEY);
 
 
 var app = express.createServer(express.logger());
@@ -16,10 +16,10 @@ app.post('/contact', function(request, response) {
   var name = request.body.name;
   var email = request.body.email;
   var mobile = request.body.mobile;
-  var out = "contact name: " + name + "\tcontact email: " + email + "\tmobile: " + mobile + "\n";
+  var out = "성명: " + name + "\t이메일: " + email + "\t휴대폰: " + mobile + "\n";
   postmark.send({
     "From": "zumbi@cdoseoul.com",
-    "To": "zumbi@cdoseoul.com",
+    "To": "info@cdoseoul.com",
     "Subject": "Free Class Signup Form Submission",
     "TextBody": out,
     "Tag": "registrant"
