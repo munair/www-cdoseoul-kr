@@ -18,8 +18,8 @@ app.post('/contact', function(request, response) {
   var mobile = request.body.mobile;
   var out = "성명: " + name + "\t이메일: " + email + "\t휴대폰: " + mobile + "\n";
   postmark.send({
-    "From": "zumbi@cdoseoul.com",
-    "To": "info@cdoseoul.com",
+    "From": "zumbi@cdoseoul.kr",
+    "To": "info@cdoseoul.kr",
     "Subject": "Free Class Signup Form Submission",
     "TextBody": out,
     "Tag": "registrant"
