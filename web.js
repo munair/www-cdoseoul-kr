@@ -21,7 +21,7 @@ app.post('/contact', function(request, response) {
   var out = 'contact name: ' + name 
           + '\ncontact email: ' + email 
           + '\nmobile: ' + mobile 
-          + '\nreferral: ' + referral 
+          + '\nreferral: ' + referrals
           + '\nvalidation: ' + validation 
           + '\n';
   postmark.send({
