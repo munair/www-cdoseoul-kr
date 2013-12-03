@@ -2,7 +2,8 @@
   "name": "cdoseoul-com",
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.3.5"
+    "express": "3.3.5",
+    "swig": "~1.2.2"
   },
   "engines": {
     "node": "0.10.x",
