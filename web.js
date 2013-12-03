@@ -16,11 +16,18 @@ app.post('/contact', function(request, response) {
   var name = request.body.name;
   var email = request.body.email;
   var mobile = request.body.mobile;
-  var out = "성명: " + name + "\t이메일: " + email + "\t휴대폰: " + mobile + "\n";
+  var referral = request.body.referral;
+  var validation = request.body.validation;
+  var out = 'contact name: ' + name 
+          + '\ncontact email: ' + email 
+          + '\nmobile: ' + mobile 
+          + '\nreferral: ' + referral 
+          + '\nvalidation: ' + validation 
+          + '\n';
   postmark.send({
     "From": "zumbi@cdoseoul.kr",
     "To": "info@cdoseoul.kr",
-    "Subject": "Free Class Signup Form Submission",
+    "Subject": "Free Class Signup [www.cdoseoul.kr]",
     "TextBody": out,
     "Tag": "registrant"
   }, function(error, success) {
